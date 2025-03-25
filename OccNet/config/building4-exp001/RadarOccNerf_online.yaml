@@ -1,0 +1,57 @@
+dataset:
+  name: panoradar_radar
+  model_name: RadarOccNerf
+  image_dir: ./data/building4-exp001/images-pred
+  var_dir: ./data/building4-exp001/uncertainty-mixed
+  lidar_pose_file: ./data/building4-exp001/poses-npy/poses-gt.npy
+  pose_file: ./data/building4-exp001/poses-npy/poses-pred.npy
+  vel_file: ./data/building4-exp001/poses-npy/motion_output.npz
+  use_vel_pose: True
+  use_uncertainty: True
+  batch_training: False
+  outlier_range: 5
+  image_lidar_dir: ./data/building4-exp001/images-gt
+
+model:
+  optimize_pose: True
+  pos_encoding_sigma:
+    base_resolution: 16
+    log2_hashmap_size: 18
+    n_features_per_level: 2
+    n_levels: 10
+    otype: Grid
+    type: Dense
+  
+  sigma_network:
+    activation: ReLU
+    n_hidden_layers: 2
+    n_neurons: 64
+    otype: FullyFusedMLP
+    output_activation: None
+
+train:
+  total_iters: 20000    # total iterations
+  train_log_per: 100    # save train log
+  val_per: [500, 500]    # validation [1000, 1000]
+  save_per: 4000        # save checkpoint
+  warmup: 2000
+  render_map_per: 4000  # rendering maps
+
+  lr: 0.001               # learning rate
+  
+  pose_lr: 0.00005              # learning rate
+  zero_init: 2000
+  rays_th: 0.05
+
+  lr_milestones: [10000]  # multistep scheduler
+  lr_gamma: 0.1           # multistep scheduler
+  
+  chunk_size: 4096        # the num of rays in a batch 4096
+  pose_chunk_size: 1024
+  ray_points: 64         # the num of points in a ray
+  ray_range: [1e-6, 9.6]  # in meters
+
+render:
+  grid_res: 0.015           # distance between two points
+  every_n_frame: 5          # render every n frame
+  outlier_dist: 5.0         # outlier if not within this range of any pose

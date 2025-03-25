@@ -1,0 +1,11 @@
+configargparse
+attridict
+scipy
+open3d==0.19.0
+tensorboard==2.19.0
+git+https://github.com/facebookresearch/detectron2.git
+opencv-python
+pyiqa
+tqdm
+natsort
+matplotlib

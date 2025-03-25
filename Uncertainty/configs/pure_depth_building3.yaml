@@ -1,0 +1,61 @@
+_BASE_: "./Base-RCNN-FPN.yaml"
+
+MODEL:
+  META_ARCHITECTURE: "PureDepthModel"
+  WEIGHTS: "./data/pretrain/depth_building3_lobo_x2/model_final.pth"
+  CIRCULAR_DEPTH: True
+  BACKBONE:
+    NAME: null
+    FREEZE_AT: 0
+    NUM_BLOCKS_PER_DOWN: (4, 4, 4, 4, 4, 4, 4)
+    DIM_MULTS: (1, 2, 4, 8, 8, 8, 8)
+    STEM_OUT_CHANNELS: 64
+
+INPUT:
+  MIN_SIZE_TRAIN: (64,)
+  MIN_SIZE_TEST: 0  # disable resizing
+  ROTATE:
+    ENABLED: True
+    ROTATE_P: 1.0
+    HFLIP_P: 0.5
+  JITTER:
+    ENABLED: False
+    MEAN: 0.0
+    STD: 0.03
+    JITTER_P: 0.5
+  FIRST_REFL:
+    ENABLED: False # useful in small datasets
+    JITTER_P: 0.5
+
+DATASETS:
+  BASE_PATH: "./data/uncertainty"
+  TRAIN: ("lobo_building3_train", )
+  TEST:  ("lobo_building3_test", )
+
+DATALOADER:
+  NUM_WORKERS: 8
+  ASPECT_RATIO_GROUPING: False
+  FILTER_EMPTY_ANNOTATIONS: False
+
+SOLVER:
+  NAME: AdamW     # or SGD
+  BASE_LR: 0.00005 # 0.01
+  GAMMA: 0.1   # The iteration number to decrease learning rate by GAMMA
+  STEPS: (35000, 45000)  # decay learning rate
+  MAX_ITER: 50000
+  IMS_PER_BATCH: 8  # This is the real "batch size"
+  CHECKPOINT_PERIOD: 50001
+  AMP:
+    ENABLED: True
+  CLIP_GRADIENTS:
+    CLIP_TYPE: value
+    CLIP_VALUE: 0.5
+    ENABLED: True
+    NORM_TYPE: 2.0
+
+TEST:
+  EVAL_PERIOD: 4000
+
+VIS_PERIOD: 4000
+CUDNN_BENCHMARK: True
+OUTPUT_DIR: "./logs/depth_building3_lobo"
