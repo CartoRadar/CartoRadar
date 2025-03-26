@@ -174,7 +174,7 @@ Our SLAM system has two versions: offline and online. The following section prov
 ### Evaluate All Trajectories
 To evaluate the performance of our SLAM system, first ensure you are in the folder `OccNet`, then you can evaluate our offline performance by simply running the following command in the terminal:
 
-Before running the below two scripts, please **ensure** the `output` folder is **empty** if you are running the scripts for the second time. The `result_summary.py` included in the script would assert there are only 14 subfolders for the offline and 14 subfolders for the online before the metric calculation.
+**Note**: Before running the below two scripts, please **ensure** the `output` folder is **empty** if you are running the scripts for the second time. The `result_summary.py` included in the script would assert there are only 14 subfolders for the offline and 14 subfolders for the online before the metric calculation.
 ```
 bash offline_run_all.sh
 ```
