@@ -177,12 +177,12 @@ def main():
         if require_log and i % config.train.train_log_per == 0:
             train_log(logs, writer, logger, i)
 
-        # validation
-        if i % (config.train.val_per[0] if i < config.train.val_per[1] else config.train.val_per[1]) == 0:
-            results = val_step(model, val_dataset, config, pose_model)
-            if require_log:
-                val_log(results, writer, logger, i)
-            torch.cuda.empty_cache()
+        # # validation
+        # if i % (config.train.val_per[0] if i < config.train.val_per[1] else config.train.val_per[1]) == 0:
+        #     results = val_step(model, val_dataset, config, pose_model)
+        #     if require_log:
+        #         val_log(results, writer, logger, i)
+        #     torch.cuda.empty_cache()
 
         # save the model and pose model checkpoint
         if require_log and i % config.train.save_per == 0:
