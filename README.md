@@ -14,7 +14,7 @@ This is an official repo of CartoRadar for the following paper:
 > *ACM International Conference on Mobile Computing and Networking (**MobiCom**), 2025* 
 >
 
-[[`Paper`]()] [[`Website`]()] [[`Demo Video`]()] [[`Dataset`]()] [[`BibTeX`](#CitingCartoRadar)]
+[[`Paper`]()] [[`Website`]()] [[`Demo Video`]()] [[`Dataset`](https://drive.google.com/drive/folders/1YFCL9d3HgiCpi1ws6IyA8TLEggsh9C1r?usp=sharing)] [[`BibTeX`](#CitingCartoRadar)]
 
 ---
 
@@ -97,12 +97,12 @@ pip install -r requirements.txt
 ## Dataset
 Our dataset includes two parts: the uncertainty quantification dataset and the SLAM evaluation dataset. Our models are also using the [PanoRadar dataset](https://upenn.box.com/v/panoradar-dataset) for pretrain weights.
 
-- **Uncertainty quantification dataset**: This dataset is organized corresponding to different buildings. Within each building, it has three folders, i.e., glass_npy, lidar_npy, and rf_npy. There are synchronized glass masks, lidar range images, and RF heatmaps in those folders. The dataset can be downloaded [here](https://xxxxxx). Please download the data, unzip it, and put it in the folder `cartoradar/Uncertainty/data/uncertainty/`.
+- **Uncertainty quantification dataset**: This dataset is organized corresponding to different buildings. Within each building, it has three folders, i.e., glass_npy, lidar_npy, and rf_npy. There are synchronized glass masks, lidar range images, and RF heatmaps in those folders. The dataset can be downloaded [here](https://drive.google.com/drive/folders/1TnFWHe5qg7PvtwZ41jBThuyXhf-YfoZl?usp=sharing). Please download the data, unzip it, and put it in the folder `cartoradar/Uncertainty/data/uncertainty/`.
 
-- **Pretain weights from PanoRadar dataset**: The [PanoRadar dataset](https://upenn.box.com/v/panoradar-dataset) is a large-scale RF imaging dataset collected from diverse environments. We use the depth-only pretrain weights for our uncertainty quantification models. They can be downloaded [here](https://xxxxxx). Please download the data, unzip it, and put it in the folder `cartoradar/Uncertainty/data/pretrain/`.
+- **Pretain weights from PanoRadar dataset**: The [PanoRadar dataset](https://upenn.box.com/v/panoradar-dataset) is a large-scale RF imaging dataset collected from diverse environments. We use the depth-only pretrain weights for our uncertainty quantification models. They can be downloaded [here](https://drive.google.com/file/d/1izFZ8Wlgmfloc8ybhv5R80yIAteDr0XI/view?usp=sharing). Please download the data, unzip it, and put it in the folder `cartoradar/Uncertainty/data/pretrain/`.
 
 - **SLAM evaluation dataset**:
-This dataset is organized as different robot moving trajectories. Within each trajectory folder, there are ground truth range images from LiDAR (images-gt), our predicted range images from RF (images-pred), the predicted uncertainty from OursH-16 method (uncertainty-mixed), the robot poses for offline SLAM (poses-npy), and the ground truth point cloud map of the environment (maps). The dataset can be downloaded [here](https://xxxxxx). Please download the data, unzip it, and put it in the folder `cartoradar/OccNet/data/`.
+This dataset is organized as different robot moving trajectories. Within each trajectory folder, there are ground truth range images from LiDAR (images-gt), our predicted range images from RF (images-pred), the predicted uncertainty from OursH-16 method (uncertainty-mixed), the robot poses for offline SLAM (poses-npy), and the ground truth point cloud map of the environment (maps). The dataset can be downloaded [here](https://drive.google.com/drive/folders/1fkKBfZ0apvUNJvUSFsaA62vkVHonTOLd?usp=sharing). Please download the data, unzip it, and put it in the folder `cartoradar/OccNet/data/`.
 
 Please make sure you put all the data in the right path. It should have a file structure like this:
 ```
